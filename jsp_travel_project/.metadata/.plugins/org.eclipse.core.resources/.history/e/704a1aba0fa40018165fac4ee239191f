@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+<%
+	//request.getRealPath("상대경로") 를 통해 파일을 저장할 절대 경로를 구해온다.
+	String uploadPath = request.getRealPath("/uploadFile");
+	out.println("절대경로 : " + uploadPath + "<br>");
+	
+	int maxSize = 1024 * 1024 * 10; //한번에 올릴 수 있는 파일 용량 : 10m
+	
+	String name = "";
+%>
+</body>
+</html>

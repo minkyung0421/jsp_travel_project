@@ -1,0 +1,314 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<META http-equiv="page-enter" content="BlendTrans(Duration=0.5)" />
+<link rel = "stylesheet" type = "text/css" href = "body_css_info.css">
+<title>Travel Diary</title>
+
+<!-- 입력하지 않았을 경우.. -->
+<style>
+@font-face { font-family: 'NANUMBARUNPENB'; src: url(font/NANUMBARUNPENB.TTF) format('truetype'); } 
+@font-face{font-family: amaticsc-bold; src:url('font/AmaticSC-Bold.ttf')}
+body { 
+	font-family: NANUMBARUNPENB; 
+	background-image: url(image/travel2.jpg);
+	background-size: 100%;
+}
+
+table{
+	background-color: white;
+	padding:5%;
+}
+.desti{
+	width: 750px;
+	height: 50px;
+}
+.title{
+	width: 750px;
+	height: 50px;
+}
+.month{
+	width: 40px;
+}
+.day{
+	width: 50px;
+}
+.money{
+	width :300px;
+}
+.move{
+	margin-right:20px;
+}
+.button{
+	margin-right:40px;
+	font-family: NANUMBARUNPENB;
+	font-size:13pt;
+}
+td{
+	padding-bottom:40px;
+}
+.name_c{
+	color: #A9E2F3;
+	font-size: 30pt;
+	margin-top:10px;
+}
+.font2{
+	font-family: amaticsc-bold;
+	font-size: 4em;
+	color: white;
+	margin-top: 2%;
+}
+textarea  
+{  
+   font-family: NANUMBARUNPENB;  
+   font-size: 15px;   
+}
+
+body:before{
+  content:'';
+  height:100%;
+  display:inline-block;
+  vertical-align:middle;
+}
+button{
+  background:black;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:30px;
+  font-size:0.8em;
+  padding:0 2em;
+  cursor:pointer;
+  margin-bottom: 2%;
+  transition:800ms ease all;
+  outline:none;
+}
+button:hover{
+  background:#fff;
+  color:black;
+}
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: black;
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+</style>
+<script>
+var rgx1 = /\D/g;  // /[^0-9]/g 와 같은 표현
+var rgx2 = /(\d+)(\d{3})/; 
+function getNumber(obj){
+	
+     var num01;
+     var num02;
+     num01 = obj.value;
+     num02 = num01.replace(rgx1,"");
+     num01 = setComma(num02);
+     obj.value =  num01;
+}
+//천단위 콤마 찍기
+function setComma(inNum){
+     
+     var outNum;
+     outNum = inNum; 
+     while (rgx2.test(outNum)) {
+          outNum = outNum.replace(rgx2, '$1' + ',' + '$2');
+      }
+     return outNum;
+}
+	
+function pop_open(){
+	
+	 var form = document.sendform;
+	 var url = "result_wtog.jsp"
+	 
+	 var left = Math.ceil((window.screen.width - 530)/2);
+     var top = Math.ceil((window.screen.height - 350)/2);
+	 
+	 window.open("","result_wtog","top=" + top + ", left =" + left + ", width=530px, height=350px");
+	 form.action = url //팝업창 URL
+	 form.target="result_wtog";
+	 form.method = "post"
+	
+	 
+	 form.submit(); // 값을 전송한다.
+	}
+</script>
+
+</head>
+<body>
+<center>
+	<a href="index.jsp"><div style = "background-color:black; margin: 2%; padding: 0.5px">
+		<p class = "font2"> add new diary</p>
+	</div></a>
+</center>
+<center>
+	<table border = 0 width = "800px" style = "margin-top:5px">
+	<tr>
+		<td>
+			<label># 대표이미지</label><br><br>
+			<input type = file name = "profile" size = 40>
+			<div id = 'holder'>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label># 여행 제목</label><br><br>
+			<input type = "text" name = "title" class = "title" id = "title">
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<label># 어디로 갈까?</label><br><br>
+		<input type = "text" placeholder = "예) 일본, 도쿄" name = "desti" class = "desti" id = "desti">
+		
+	</tr>
+	<tr>
+		<td>
+		<label># 어디로 갈까?(영문)</label><br><br>
+		<input type = "text" placeholder = "예) Japan, Tokyo" name = "e_desti" class = "desti" id = "desti">
+		
+	</tr>
+	
+	<tr>
+		<td>
+			<label># 얼마나 갈까?</label><br><br>
+			<input type = "date" name = "s_day"> ~ <input type = "date" name = "e_day">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label># 얼마 가지고 갈까?</label><br><br>
+			<input type = "text" name = "money" class = "money" id = "money" onchange="getNumber(this);" onkeyup="getNumber(this);">원
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label># 어떻게 갈까?</label><br><br>
+			<input type = "checkbox" name = "move" value = "비행기"><label class ="move">비행기</label>
+			<input type = "checkbox" name = "move" value = "배"><label class ="move">배</label>
+			<input type = "checkbox" name = "move" value = "차"><label class ="move">자동차</label>
+			<input type = "checkbox" name = "move" value = "걸어서"><label class ="move">걸어서</label>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label># 누구랑 갈까?</label><br><br>
+			<input type = "radio" name = "who" value = "together"><label class ="move">같이가자</label>
+			<input type = "radio" name = "who" value = "solo"><label class ="move">혼자가자</label>	
+		
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label># 어디를 가볼까?</label><br><br>
+			<button onclick="add_tr()">추가</button>
+			<button onclick="delete_tr()">삭제</button> 
+			<table cellpadding=0 cellspacing=0 id="text_table" border="1"></table>
+			
+		</td>
+		<td>
+		</td>
+	</tr>
+</table>
+	</center>
+</body>
+<script>
+
+//행개수
+var count = 1;
+//최대 행개수
+var full_count = 10;
+//이름 값
+var name = 1;
+  //행추가
+  function add_tr() {
+ //최대 행개수보다 크면 리턴
+ if(count>full_count){
+  alert("최대10개까지만 가능합니다.");
+  return;
+ }
+ 
+ //추가할 HTML
+ var add_cell1 = "<p id = 'status'><br><input type='file' size=40 name = 'img"+name+"'>"; 
+ var add_cell2 = "<textarea rows='10' cols='50' name='text" + name + "'>";
+ 
+ //행추가할 테이블 가져오기
+ var table_name = document.getElementById("text_table");
+ 
+ //tr만들기
+ var new_row = table_name.insertRow();
+ 
+ //td만들기
+ var new_cell1 = new_row.insertCell();
+ var new_cell2 = new_row.insertCell();
+ 
+ //td안에 넣을 HTML
+ new_cell1.innerHTML = add_cell1;
+ new_cell2.innerHTML = add_cell2;
+ //행추가할때마다 행개수 +1
+ count++;
+ name++;
+  }
+
+  //행삭제
+  function delete_tr() {
+ //행삭제할 테이블 가져오기
+    var table = document.getElementById('text_table');
+ 
+ //행이 하나밖에 없으면 삭제하지 않기
+    if (table.rows.length < 2){
+     alert("더이상 삭제할수 없습니다.");
+     return;
+    }
+ 
+ //tr삭제하기
+    table.deleteRow(table.rows.length - 1);
+ //삭제할때마다 행개수 -1
+ count--;
+ name--;
+  }
+</script>
+<script>
+var upload = document.getElementsByTagName('input')[0],
+holder = document.getElementById('holder');
+
+
+upload.onchange = function (e) {
+e.preventDefault();
+
+var file = upload.files[0],
+  reader = new FileReader();
+reader.onload = function (event) {
+var img = new Image();
+img.src = event.target.result;
+// note: no onload required since we've got the dataurl...I think! :)
+if (img.width > 250) { // holder width
+  img.width = 250;
+}
+holder.innerHTML = '';
+holder.appendChild(img);
+};
+reader.readAsDataURL(file);
+
+return false;
+};
+</script>
+</html>

@@ -1,0 +1,44 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src = "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src = "http://malsup.github.com/jquery.cycle2.js"></script>
+<title>Insert title here</title>
+</head>
+<style>
+.mySlides {display:none;}
+</style>
+<body>
+<script language="javascript">
+
+</script>
+<div class="bookWrapper">
+  <div class="bookBg">
+    <div class="pageBg centerClass">
+      <div class="pageWrapper">
+        <div id="page3" class="page">
+          <div class="pageFace front"><h1>front3</h1>
+            <div class="pageFoldRight"></div></div>
+          <div class="pageFace back"><h1>back3</h1>
+            <div class="pageFoldLeft"></div></div>
+        </div>
+        <div id="page2" class="page">
+          <div class="pageFace front"><h1>front2</h1>
+            <div class="pageFoldRight"></div></div>
+          <div class="pageFace back"><h1>back2</h1>
+            <div class="pageFoldLeft"></div></div>
+        </div>
+        <div id="page1" class="page">
+          <div class="pageFace front"><h1>front1</h1>
+            <div class="pageFoldRight"></div></div>
+          <div class="pageFace back"><h1>back1</h1>
+            <div class="pageFoldLeft"></div></div>
+        </div>
+      </div>
+      
+</body>
+</html>
