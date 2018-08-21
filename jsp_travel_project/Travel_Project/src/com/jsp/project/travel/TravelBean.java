@@ -1,5 +1,7 @@
 package com.jsp.project.travel;
 
+import java.sql.Timestamp;
+
 public class TravelBean {
 
 	private int id; //분류
@@ -13,13 +15,16 @@ public class TravelBean {
 	private String trans; //교통수단
 	private String people; //동행인 유무
 	private String course; //계획
+	private Timestamp add_date; //추가날짜
 	
 	public TravelBean() {
 		
 	}
 	
+	
+
 	public TravelBean(int id, String title_img, String concept, String place, String place_e, String s_date,
-			String e_date, String money, String trans, String people, String course) {
+			String e_date, String money, String trans, String people, String course, Timestamp add_date) {
 		super();
 		this.id = id;
 		this.title_img = title_img;
@@ -32,7 +37,22 @@ public class TravelBean {
 		this.trans = trans;
 		this.people = people;
 		this.course = course;
+		this.add_date = add_date;
 	}
+
+
+
+	public Timestamp getAdd_date() {
+		return add_date;
+	}
+
+
+
+	public void setAdd_date(Timestamp add_date) {
+		this.add_date = add_date;
+	}
+
+
 
 	public int getId() {
 		return id;

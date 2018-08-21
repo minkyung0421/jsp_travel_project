@@ -153,12 +153,14 @@ function pop_open(){
 
 </head>
 <body>
+
 <center>
 	<a href="index.jsp"><div style = "background-color:black; margin: 2%; padding: 0.5px">
 		<p class = "font2"> add new diary</p>
 	</div></a>
 </center>
 <center>
+<form method= "post" name="writeform" action="insertPro.jsp" enctype="multipart/form-data">
 	<table border = 0 width = "800px" style = "margin-top:5px">
 	<tr>
 		<td>
@@ -219,72 +221,21 @@ function pop_open(){
 	<tr>
 		<td>
 			<label># 여행 코스를 짜볼까?</label><br><br>
-			
-			<textarea rows="30" cols="200"></textarea>
-			
+			<textarea rows="30" cols="100" name = "course"></textarea>
 		</td>
+	</tr>
+	
+	<tr>
 		<td>
+			<input type = "submit" value = "작성완료">
+			<input type = "reset" value = "다시작성">
 		</td>
 	</tr>
 </table>
-	</center>
+</form>
+</center>
 </body>
-<script>
 
-//행개수
-var count = 1;
-//최대 행개수
-var full_count = 10;
-//이름 값
-var name = 1;
-  //행추가
-  function add_tr() {
- //최대 행개수보다 크면 리턴
- if(count>full_count){
-  alert("최대10개까지만 가능합니다.");
-  return;
- }
- 
- //추가할 HTML
- var add_cell1 = "<p id = 'status'><br><input type='file' size=40 name = 'img"+name+"'>"; 
- var add_cell2 = "<textarea rows='10' cols='50' name='text" + name + "'>";
- 
- //행추가할 테이블 가져오기
- var table_name = document.getElementById("text_table");
- 
- //tr만들기
- var new_row = table_name.insertRow();
- 
- //td만들기
- var new_cell1 = new_row.insertCell();
- var new_cell2 = new_row.insertCell();
- 
- //td안에 넣을 HTML
- new_cell1.innerHTML = add_cell1;
- new_cell2.innerHTML = add_cell2;
- //행추가할때마다 행개수 +1
- count++;
- name++;
-  }
-
-  //행삭제
-  function delete_tr() {
- //행삭제할 테이블 가져오기
-    var table = document.getElementById('text_table');
- 
- //행이 하나밖에 없으면 삭제하지 않기
-    if (table.rows.length < 2){
-     alert("더이상 삭제할수 없습니다.");
-     return;
-    }
- 
- //tr삭제하기
-    table.deleteRow(table.rows.length - 1);
- //삭제할때마다 행개수 -1
- count--;
- name--;
-  }
-</script>
 <script>
 var upload = document.getElementsByTagName('input')[0],
 holder = document.getElementById('holder');
