@@ -1,0 +1,16 @@
+package com.jsp.project.travel;
+
+public class TravelBean {
+
+	private int id; //분류
+	private String title_img; //대표사진
+	private String concept; //컨셉
+	private String place; //장소
+	private String place_e; //장소(영문)
+	private String s_date; //출발날짜
+	private String e_date; //도착날짜
+	private String money; //예산
+	private String trans; //교통수단
+	private String people; //동행인 유무
+	private String course; //계획
+}

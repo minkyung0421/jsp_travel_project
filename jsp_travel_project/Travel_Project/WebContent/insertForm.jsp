@@ -153,6 +153,7 @@ function pop_open(){
 
 </head>
 <body>
+<form method= "post" name="writeform" action="insertPro" enctype="multipart/form-data">
 <center>
 	<a href="index.jsp"><div style = "background-color:black; margin: 2%; padding: 0.5px">
 		<p class = "font2"> add new diary</p>
@@ -219,15 +220,19 @@ function pop_open(){
 	<tr>
 		<td>
 			<label># 여행 코스를 짜볼까?</label><br><br>
-			
-			<textarea rows="30" cols="200"></textarea>
-			
+			<textarea rows="30" cols="100"></textarea>
 		</td>
+	</tr>
+	
+	<tr>
 		<td>
+			<input type = "button" value = "작성완료" onclick="checkForm(this.form)">
+			<input type = "reset" value = "다시작성">
 		</td>
 	</tr>
 </table>
-	</center>
+</center>
+</form>
 </body>
 <script>
 
